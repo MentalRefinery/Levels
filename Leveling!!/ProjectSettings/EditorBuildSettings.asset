@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/2 Samurai.unity
+    guid: 6f925b5d60daec74cbc0084f14f6e2a1
+  - enabled: 1
+    path: Assets/Scenes/Fog Scene.unity
+    guid: 4c0a05dc55bbf4444a9eead67ef87262
+  - enabled: 1
+    path: Assets/Scenes/Fireworks.unity
+    guid: a790d834b349cfd4f8572edd32e19892
+  - enabled: 1
+    path: Assets/Scenes/Character screen.unity
+    guid: e6c3a4120a37abf4bb39d9df0eacfb56
   m_configObjects: {}
