@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 10
+    serializedVersion: 12
     m_Resolution: 2
     m_BakeResolution: 40
     m_AtlasSize: 1024
@@ -62,6 +62,7 @@ LightmapSettings:
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
@@ -76,10 +77,16 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 500
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 2
+    m_PVRDenoiserTypeDirect: 0
+    m_PVRDenoiserTypeIndirect: 0
+    m_PVRDenoiserTypeAO: 0
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
     m_PVRFilterTypeAO: 0
-    m_PVRFilteringMode: 1
+    m_PVREnvironmentMIS: 0
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
@@ -87,7 +94,9 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -122,7 +131,6 @@ GameObject:
   m_Component:
   - component: {fileID: 263554798}
   - component: {fileID: 263554797}
-  - component: {fileID: 263554796}
   - component: {fileID: 263554795}
   - component: {fileID: 263554794}
   m_Layer: 0
@@ -148,14 +156,6 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263554793}
   m_Enabled: 1
---- !u!92 &263554796
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263554793}
-  m_Enabled: 1
 --- !u!20 &263554797
 Camera:
   m_ObjectHideFlags: 0
@@ -168,9 +168,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -237,12 +238,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465941007}
   m_Enabled: 1
-  serializedVersion: 8
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -252,6 +255,24 @@ Light:
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -259,12 +280,15 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &465941009
@@ -528,6 +552,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -539,6 +564,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -681,6 +707,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -692,6 +719,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -832,7 +860,7 @@ MonoBehaviour:
     AttractorMass: 1000
     GravityConstant: 0.1
   VelocityHandle: {fileID: 1630831012}
-  VelocityHandleLenghtScale: 0
+  VelocityHandleLenghtScale: 8.54
   TimeScale: 1
   OrbitData:
     GravConst: 0.10000000149011612
@@ -855,48 +883,48 @@ MonoBehaviour:
     AttractorDistance: 141.0637223404516
     AttractorMass: 1000
     Velocity:
-      x: -0.8226261138916016
+      x: -0.09632624685764313
       y: 0
-      z: 0.1824798583984375
+      z: 0.021367665380239487
     MG: 100.00000149011612
-    SemiMinorAxis: 141.28539741030983
-    SemiMajorAxis: 141.28557159038797
-    FocalParameter: 141.2852232304464
-    Eccentricity: 0.0015702369692070586
-    EnergyTotal: -0.7077863674574918
-    Period: 1055.1800816486395
-    TrueAnomaly: 0.004828248984089222
-    MeanAnomaly: 0.004813103891094454
-    EccentricAnomaly: 0.004820673461461966
+    SemiMinorAxis: 11.729496641104715
+    SemiMajorAxis: 71.0195169940578
+    FocalParameter: 1.9372293318356164
+    Eccentricity: 0.9862669912597413
+    EnergyTotal: -1.4080636664775223
+    Period: 376.0507304600833
+    TrueAnomaly: 3.141592574920867
+    MeanAnomaly: 3.1415907635047358
+    EccentricAnomaly: 3.14159170201326
     SquaresConstant: 0
     Periapsis:
-      x: 31.164551120472016
-      y: 7.904016061868139
-      z: 137.35090213330173
-    PeriapsisDistance: 141.0637197626612
+      x: -0.21087613460639787
+      y: -0.05464883894142458
+      z: -0.950672167582681
+    PeriapsisDistance: 0.9753116476083604
     Apoapsis:
-      x: -31.262576504149603
-      y: -7.928877456600354
-      z: -137.78292744398348
-    ApoapsisDistance: 141.50742341811474
+      x: 30.499966419247965
+      y: 7.904108047482126
+      z: 137.50000321802975
+    ApoapsisDistance: 141.0637223405072
     CenterPoint:
-      x: -0.04901269183879405
-      y: -0.012430697366107676
-      z: -0.21601265534088393
-    OrbitCompressionRatio: 0.9999975343558606
+      x: 15.144545142320784
+      y: 3.924729604270351
+      z: 68.27466552522354
+    OrbitCompressionRatio: 0.027277421951457437
     OrbitNormal:
-      x: 0.012134431357816514
-      y: -0.9984289632580398
-      z: 0.05470247620627517
+      x: 0.012134431126245428
+      y: -0.99842896325804
+      z: 0.054702476257641824
     SemiMinorAxisBasis:
-      x: 0.9752152311134551
-      y: -0.00027011213329869877
-      z: -0.22125817508911594
+      x: -0.9762705652366995
+      y: -0.0000004298057566923997
+      z: 0.216554342953981
     SemiMajorAxisBasis:
-      x: 0.2209253461691367
-      y: 0.05603153011395555
-      z: 0.9736798544969163
-    OrbitNormalDotEclipticNormal: 0.05470247620627517
+      x: -0.21621410461313006
+      y: -0.05603218117555953
+      z: -0.974736813524067
+    OrbitNormalDotEclipticNormal: 0.054702476257641824
   LockOrbitEditing: 0
 --- !u!23 &1706961761
 MeshRenderer:
@@ -912,6 +940,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -923,6 +952,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1050,53 +1080,53 @@ MonoBehaviour:
       y: 0
       z: 0
     Position:
-      x: -0.9599909782409668
+      x: -0.9599905014038086
       y: 0
       z: -0.33998870849609375
-    AttractorDistance: 1.0184178907545223
+    AttractorDistance: 1.0184174412736546
     AttractorMass: 1000
     Velocity:
-      x: -3.308152198791504
+      x: -3.3081531524658203
       y: 0
       z: 9.340568542480469
     MG: 100.00000149011612
-    SemiMinorAxis: 1.0184030683275094
-    SemiMajorAxis: 1.0184030684941594
-    FocalParameter: 1.0184030681608591
-    Eccentricity: 0.000018090807098937387
-    EnergyTotal: -98.19294990732803
-    Period: 0.6457425641906466
-    TrueAnomaly: 2.505673782153707
-    MeanAnomaly: 2.5056522930426075
-    EccentricAnomaly: 2.5056630376372517
+    SemiMinorAxis: 1.0184022348290476
+    SemiMajorAxis: 1.0184022350006436
+    FocalParameter: 1.0184022346574513
+    Eccentricity: 0.000018357311434763385
+    EnergyTotal: -98.19303027163221
+    Period: 0.6457417714463787
+    TrueAnomaly: 2.520748806922385
+    MeanAnomaly: 2.5207274489888243
+    EccentricAnomaly: 2.5207381279954673
     SquaresConstant: 0
     Periapsis:
-      x: 0.9742312625615654
+      x: 0.978590862901
       y: 0
-      z: -0.29661546104691167
-    PeriapsisDistance: 1.0183846447606983
+      z: -0.2818952949807112
+    PeriapsisDistance: 1.0183835398736498
     Apoapsis:
-      x: -0.974266512458946
+      x: -0.9786267921550394
       y: -0
-      z: 0.2966261932672429
-    ApoapsisDistance: 1.0184214922276205
+      z: 0.2819056448501509
+    ApoapsisDistance: 1.0184209301276375
     CenterPoint:
-      x: -0.000017624948690302385
+      x: -0.000017964627019740504
       y: -0
-      z: 0.0000053661101656259325
-    OrbitCompressionRatio: 0.9999999996727227
+      z: 0.000005174934719843714
+    OrbitCompressionRatio: 0.9999999996630091
     OrbitNormal:
       x: 0
       y: 1
       z: 0
     SemiMinorAxisBasis:
-      x: 0.2912607358849276
+      x: 0.2768066096351928
       y: -0
-      z: 0.9566437078305435
+      z: 0.9609256479365457
     SemiMajorAxisBasis:
-      x: 0.9566437078305436
+      x: 0.9609256479365457
       y: 0
-      z: -0.2912607358849277
+      z: -0.2768066096351928
     OrbitNormalDotEclipticNormal: 0
   LockOrbitEditing: 0
 --- !u!23 &1743455987
@@ -1113,6 +1143,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1124,6 +1155,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1314,6 +1346,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1325,6 +1358,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1436,53 +1470,53 @@ MonoBehaviour:
       y: 0
       z: 0
     Position:
-      x: 0.2440013885498047
+      x: 0.24399852752685547
       y: 0
       z: -0.2029876708984375
-    AttractorDistance: 0.3173967109958847
+    AttractorDistance: 0.3173945115657264
     AttractorMass: 1000
     Velocity:
-      x: -11.352084159851074
+      x: -11.352082252502441
       y: 0
       z: -13.645156860351562
     MG: 100.00000149011612
-    SemiMinorAxis: 0.31739367829349213
-    SemiMajorAxis: 0.31739367838696714
-    FocalParameter: 0.3173936782000171
-    Eccentricity: 0.00002426965457924041
-    EnergyTotal: -315.06614119830033
-    Period: 0.11235108579894375
-    TrueAnomaly: 4.307724169579325
-    MeanAnomaly: 4.307768788902621
-    EccentricAnomaly: 4.30774647918769
+    SemiMinorAxis: 0.3173892359308811
+    SemiMajorAxis: 0.3173892360177325
+    FocalParameter: 0.3173892358440297
+    Eccentricity: 0.000023394150706942077
+    EnergyTotal: -315.07055105211293
+    Period: 0.11234872704090323
+    TrueAnomaly: 3.922154667436132
+    MeanAnomaly: 3.9221875917847906
+    EccentricAnomaly: 3.922171129542062
     SquaresConstant: 0
     Periapsis:
-      x: -0.28264963904207097
+      x: -0.31619086559553217
       y: 0
-      z: -0.1443711844501683
-    PeriapsisDistance: 0.31738597535202706
+      z: -0.027469081638765925
+    PeriapsisDistance: 0.31738181096611234
     Apoapsis:
-      x: 0.28266335899326245
+      x: 0.31620565997515787
       y: -0
-      z: 0.14437819229780194
-    ApoapsisDistance: 0.3174013814219072
+      z: 0.02747036690050481
+    ApoapsisDistance: 0.31739666106935266
     CenterPoint:
-      x: 0.0000068599755957361776
+      x: 0.0000073971898128736365
       y: -0
-      z: 0.0000035039238168220955
-    OrbitCompressionRatio: 0.9999999994109838
+      z: 0.0000006426308694419941
+    OrbitCompressionRatio: 0.9999999994527137
     OrbitNormal:
       x: 0
       y: 1
       z: 0
     SemiMinorAxisBasis:
-      x: 0.45487575274880915
+      x: 0.08654901033915541
       y: 0
-      z: -0.8905549110308719
+      z: -0.9962475941297488
     SemiMajorAxisBasis:
-      x: -0.890554911030872
+      x: -0.9962475941297488
       y: 0
-      z: -0.4548757527488092
+      z: -0.08654901033915541
     OrbitNormalDotEclipticNormal: 0
   LockOrbitEditing: 0
 --- !u!23 &1875600059
@@ -1499,6 +1533,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1510,6 +1545,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1745,6 +1781,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1756,6 +1793,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
