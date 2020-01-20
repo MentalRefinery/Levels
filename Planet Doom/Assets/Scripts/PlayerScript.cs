@@ -58,7 +58,7 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.AddForce(transform.up * 40000 * JumpHeight * Time.deltaTime);
+            rb.AddForce(transform.up * 1000 * JumpHeight * Time.deltaTime);
 
         }
 
@@ -73,7 +73,7 @@ public class PlayerScript : MonoBehaviour
             distanceToGround = hit.distance;
             Groundnormal = hit.normal;
 
-            if (distanceToGround <= 0.2f)
+            if (distanceToGround <= 0.4f)
             {
                 OnGround = true;
             }
